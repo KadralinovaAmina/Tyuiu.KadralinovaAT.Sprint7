@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             panelTop_KAT = new Panel();
             buttonGuide_KAT = new Button();
             buttonHelp_KAT = new Button();
+            buttonDone_KAT = new Button();
             buttonSaveFile_KAT = new Button();
             buttonOpenFile_KAT = new Button();
             labelSearch_KAT = new Label();
@@ -40,6 +45,7 @@
             buttonSortS_KAT = new Button();
             buttonSortRoom_KAT = new Button();
             panelLeft_KAT = new Panel();
+            labelHead_KAT = new Label();
             comboBoxFilter_KAT = new ComboBox();
             textBoxMedium_KAT = new TextBox();
             textBoxMAX_KAT = new TextBox();
@@ -50,20 +56,26 @@
             buttonStartFilter_KAT = new Button();
             buttonMIN_KAT = new Button();
             buttonStopFilter_KAT = new Button();
-            labelHead_KAT = new Label();
             panelDataGrid_KAT = new Panel();
             dataGridViewTab_KAT = new DataGridView();
             panelChart_KAT = new Panel();
+            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            openFileDialog_KAT = new OpenFileDialog();
+            saveFileDialog_KAT = new SaveFileDialog();
+            toolTip_KAT = new ToolTip(components);
             panelTop_KAT.SuspendLayout();
             panelLeft_KAT.SuspendLayout();
             panelDataGrid_KAT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab_KAT).BeginInit();
+            panelChart_KAT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
             SuspendLayout();
             // 
             // panelTop_KAT
             // 
             panelTop_KAT.Controls.Add(buttonGuide_KAT);
             panelTop_KAT.Controls.Add(buttonHelp_KAT);
+            panelTop_KAT.Controls.Add(buttonDone_KAT);
             panelTop_KAT.Controls.Add(buttonSaveFile_KAT);
             panelTop_KAT.Controls.Add(buttonOpenFile_KAT);
             panelTop_KAT.Dock = DockStyle.Top;
@@ -81,7 +93,9 @@
             buttonGuide_KAT.Name = "buttonGuide_KAT";
             buttonGuide_KAT.Size = new Size(117, 80);
             buttonGuide_KAT.TabIndex = 0;
+            toolTip_KAT.SetToolTip(buttonGuide_KAT, "Краткое руководство пользователя");
             buttonGuide_KAT.UseVisualStyleBackColor = false;
+            buttonGuide_KAT.Click += buttonGuide_KAT_Click;
             // 
             // buttonHelp_KAT
             // 
@@ -92,16 +106,33 @@
             buttonHelp_KAT.Name = "buttonHelp_KAT";
             buttonHelp_KAT.Size = new Size(117, 80);
             buttonHelp_KAT.TabIndex = 0;
+            toolTip_KAT.SetToolTip(buttonHelp_KAT, "О программе");
             buttonHelp_KAT.UseVisualStyleBackColor = false;
+            buttonHelp_KAT.Click += buttonHelp_KAT_Click;
+            // 
+            // buttonDone_KAT
+            // 
+            buttonDone_KAT.BackColor = SystemColors.ButtonFace;
+            buttonDone_KAT.FlatStyle = FlatStyle.Flat;
+            buttonDone_KAT.Image = Properties.Resources.check;
+            buttonDone_KAT.Location = new Point(246, 0);
+            buttonDone_KAT.Name = "buttonDone_KAT";
+            buttonDone_KAT.Size = new Size(117, 80);
+            buttonDone_KAT.TabIndex = 0;
+            toolTip_KAT.SetToolTip(buttonDone_KAT, "Выполнить обработку данных");
+            buttonDone_KAT.UseVisualStyleBackColor = false;
             // 
             // buttonSaveFile_KAT
             // 
             buttonSaveFile_KAT.BackColor = SystemColors.ButtonFace;
+            buttonSaveFile_KAT.Enabled = false;
+            buttonSaveFile_KAT.FlatStyle = FlatStyle.Flat;
             buttonSaveFile_KAT.Image = Properties.Resources.diskette;
             buttonSaveFile_KAT.Location = new Point(123, 0);
             buttonSaveFile_KAT.Name = "buttonSaveFile_KAT";
             buttonSaveFile_KAT.Size = new Size(117, 80);
             buttonSaveFile_KAT.TabIndex = 0;
+            toolTip_KAT.SetToolTip(buttonSaveFile_KAT, "Сохранить обработанные данные в файл в формате CSV");
             buttonSaveFile_KAT.UseVisualStyleBackColor = false;
             // 
             // buttonOpenFile_KAT
@@ -112,6 +143,7 @@
             buttonOpenFile_KAT.Name = "buttonOpenFile_KAT";
             buttonOpenFile_KAT.Size = new Size(117, 80);
             buttonOpenFile_KAT.TabIndex = 0;
+            toolTip_KAT.SetToolTip(buttonOpenFile_KAT, "Открыть файл для обработки данных в формате CSV");
             buttonOpenFile_KAT.UseVisualStyleBackColor = false;
             // 
             // labelSearch_KAT
@@ -141,11 +173,11 @@
             // 
             // buttonSearch_KAT
             // 
+            buttonSearch_KAT.Image = Properties.Resources.search;
             buttonSearch_KAT.Location = new Point(264, 153);
             buttonSearch_KAT.Name = "buttonSearch_KAT";
             buttonSearch_KAT.Size = new Size(52, 29);
             buttonSearch_KAT.TabIndex = 2;
-            buttonSearch_KAT.Text = "go";
             buttonSearch_KAT.UseVisualStyleBackColor = true;
             // 
             // buttonSortS_KAT
@@ -190,6 +222,17 @@
             panelLeft_KAT.Name = "panelLeft_KAT";
             panelLeft_KAT.Size = new Size(328, 823);
             panelLeft_KAT.TabIndex = 1;
+            // 
+            // labelHead_KAT
+            // 
+            labelHead_KAT.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelHead_KAT.ForeColor = SystemColors.HotTrack;
+            labelHead_KAT.Location = new Point(51, 22);
+            labelHead_KAT.Name = "labelHead_KAT";
+            labelHead_KAT.Size = new Size(217, 103);
+            labelHead_KAT.TabIndex = 6;
+            labelHead_KAT.Text = "Добро пожаловать!\r\nДомоуправление \"Уютный Квартал\"";
+            labelHead_KAT.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // comboBoxFilter_KAT
             // 
@@ -280,17 +323,6 @@
             buttonStopFilter_KAT.Text = "Сброс фильтра";
             buttonStopFilter_KAT.UseVisualStyleBackColor = true;
             // 
-            // labelHead_KAT
-            // 
-            labelHead_KAT.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            labelHead_KAT.ForeColor = SystemColors.HotTrack;
-            labelHead_KAT.Location = new Point(51, 22);
-            labelHead_KAT.Name = "labelHead_KAT";
-            labelHead_KAT.Size = new Size(217, 103);
-            labelHead_KAT.TabIndex = 6;
-            labelHead_KAT.Text = "Добро пожаловать!\r\nДомоуправление \"Уютный Квартал\"";
-            labelHead_KAT.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // panelDataGrid_KAT
             // 
             panelDataGrid_KAT.Controls.Add(dataGridViewTab_KAT);
@@ -312,11 +344,38 @@
             // 
             // panelChart_KAT
             // 
+            panelChart_KAT.Controls.Add(chart1);
             panelChart_KAT.Dock = DockStyle.Fill;
             panelChart_KAT.Location = new Point(328, 530);
             panelChart_KAT.Name = "panelChart_KAT";
             panelChart_KAT.Size = new Size(1154, 373);
             panelChart_KAT.TabIndex = 3;
+            // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            chart1.ChartAreas.Add(chartArea1);
+            chart1.Dock = DockStyle.Fill;
+            legend1.Name = "Legend1";
+            chart1.Legends.Add(legend1);
+            chart1.Location = new Point(0, 0);
+            chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            chart1.Series.Add(series1);
+            chart1.Size = new Size(1154, 373);
+            chart1.TabIndex = 0;
+            chart1.Text = "chart1";
+            // 
+            // openFileDialog_KAT
+            // 
+            openFileDialog_KAT.FileName = "openFileDialog_KAT";
+            // 
+            // toolTip_KAT
+            // 
+            toolTip_KAT.IsBalloon = true;
+            toolTip_KAT.ToolTipTitle = "Подсказка";
             // 
             // FormMain
             // 
@@ -336,6 +395,8 @@
             panelLeft_KAT.PerformLayout();
             panelDataGrid_KAT.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab_KAT).EndInit();
+            panelChart_KAT.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
             ResumeLayout(false);
         }
 
@@ -367,5 +428,10 @@
         private Panel panelDataGrid_KAT;
         private DataGridView dataGridViewTab_KAT;
         private Panel panelChart_KAT;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private ToolTip toolTip_KAT;
+        private OpenFileDialog openFileDialog_KAT;
+        private SaveFileDialog saveFileDialog_KAT;
+        private Button buttonDone_KAT;
     }
 }
