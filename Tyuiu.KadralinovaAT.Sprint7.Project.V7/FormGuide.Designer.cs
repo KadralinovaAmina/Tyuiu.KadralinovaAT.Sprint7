@@ -36,15 +36,19 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
+            pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // labelHead_KAT
             // 
             labelHead_KAT.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             labelHead_KAT.ForeColor = SystemColors.Highlight;
-            labelHead_KAT.Location = new Point(37, 9);
+            labelHead_KAT.Location = new Point(37, 0);
             labelHead_KAT.Name = "labelHead_KAT";
-            labelHead_KAT.Size = new Size(819, 78);
+            labelHead_KAT.Size = new Size(819, 59);
             labelHead_KAT.TabIndex = 0;
             labelHead_KAT.Text = "Краткое руководство пользователя для \"Домоуправление 'Уютный Квартал'\"";
             labelHead_KAT.TextAlign = ContentAlignment.MiddleCenter;
@@ -52,15 +56,17 @@
             // labelProgram_KAT
             // 
             labelProgram_KAT.AutoSize = true;
-            labelProgram_KAT.Location = new Point(24, 78);
+            labelProgram_KAT.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            labelProgram_KAT.ForeColor = SystemColors.MenuText;
+            labelProgram_KAT.Location = new Point(24, 59);
             labelProgram_KAT.Name = "labelProgram_KAT";
-            labelProgram_KAT.Size = new Size(181, 20);
+            labelProgram_KAT.Size = new Size(182, 20);
             labelProgram_KAT.TabIndex = 1;
             labelProgram_KAT.Text = "Назначение программы";
             // 
             // labelProgramAbout_KAT
             // 
-            labelProgramAbout_KAT.Location = new Point(24, 109);
+            labelProgramAbout_KAT.Location = new Point(24, 90);
             labelProgramAbout_KAT.Name = "labelProgramAbout_KAT";
             labelProgramAbout_KAT.Size = new Size(808, 51);
             labelProgramAbout_KAT.TabIndex = 1;
@@ -69,15 +75,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(24, 177);
+            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            label1.Location = new Point(24, 158);
             label1.Name = "label1";
-            label1.Size = new Size(275, 20);
+            label1.Size = new Size(278, 20);
             label1.TabIndex = 1;
             label1.Text = "Панель инструментов (верхняя часть)";
             // 
             // label2
             // 
-            label2.Location = new Point(24, 208);
+            label2.Location = new Point(24, 189);
             label2.Name = "label2";
             label2.Size = new Size(808, 91);
             label2.TabIndex = 1;
@@ -86,25 +93,47 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(24, 308);
+            label3.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            label3.Location = new Point(24, 289);
             label3.Name = "label3";
-            label3.Size = new Size(258, 20);
+            label3.Size = new Size(260, 20);
             label3.TabIndex = 1;
             label3.Text = "Панель инструментов (левая часть)";
             // 
             // label4
             // 
-            label4.Location = new Point(24, 339);
+            label4.Location = new Point(24, 320);
             label4.Name = "label4";
-            label4.Size = new Size(808, 383);
+            label4.Size = new Size(582, 410);
             label4.TabIndex = 1;
             label4.Text = resources.GetString("label4.Text");
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.верхняя;
+            pictureBox1.Location = new Point(483, 189);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(364, 91);
+            pictureBox1.TabIndex = 2;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            pictureBox2.Image = Properties.Resources.нижняя;
+            pictureBox2.Location = new Point(581, 289);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(266, 434);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 3;
+            pictureBox2.TabStop = false;
             // 
             // FormGuide
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(898, 716);
+            ClientSize = new Size(898, 735);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
             Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(labelProgramAbout_KAT);
@@ -118,6 +147,8 @@
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Краткое руководство пользователя";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,5 +162,7 @@
         private Label label2;
         private Label label3;
         private Label label4;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
     }
 }

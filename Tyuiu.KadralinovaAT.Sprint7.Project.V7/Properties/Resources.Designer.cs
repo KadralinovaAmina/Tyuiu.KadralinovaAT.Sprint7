@@ -173,6 +173,26 @@ namespace Tyuiu.KadralinovaAT.Sprint7.Project.V7.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap верхняя {
+            get {
+                object obj = ResourceManager.GetObject("верхняя", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap нижняя {
+            get {
+                object obj = ResourceManager.GetObject("нижняя", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap я {
             get {
                 object obj = ResourceManager.GetObject("я", resourceCulture);
