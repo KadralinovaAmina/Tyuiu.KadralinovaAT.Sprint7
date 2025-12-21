@@ -50,6 +50,7 @@
             textBoxMedium_KAT = new TextBox();
             textBoxMAX_KAT = new TextBox();
             textBoxMIN_KAT = new TextBox();
+            button1 = new Button();
             buttonGraphic_KAT = new Button();
             buttonMedium_KAT = new Button();
             buttonMAX_KAT = new Button();
@@ -58,17 +59,23 @@
             buttonStopFilter_KAT = new Button();
             panelDataGrid_KAT = new Panel();
             dataGridViewTab_KAT = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             panelChart_KAT = new Panel();
-            chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            chartGrafic_KAT = new System.Windows.Forms.DataVisualization.Charting.Chart();
             openFileDialog_KAT = new OpenFileDialog();
-            saveFileDialog_KAT = new SaveFileDialog();
+            SaveFileDialog_KAT = new SaveFileDialog();
             toolTip_KAT = new ToolTip(components);
             panelTop_KAT.SuspendLayout();
             panelLeft_KAT.SuspendLayout();
             panelDataGrid_KAT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab_KAT).BeginInit();
             panelChart_KAT.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chart1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chartGrafic_KAT).BeginInit();
             SuspendLayout();
             // 
             // panelTop_KAT
@@ -96,6 +103,7 @@
             toolTip_KAT.SetToolTip(buttonGuide_KAT, "Краткое руководство пользователя");
             buttonGuide_KAT.UseVisualStyleBackColor = false;
             buttonGuide_KAT.Click += buttonGuide_KAT_Click;
+            buttonGuide_KAT.MouseEnter += buttonGuide_KAT_MouseEnter;
             // 
             // buttonHelp_KAT
             // 
@@ -109,10 +117,12 @@
             toolTip_KAT.SetToolTip(buttonHelp_KAT, "О программе");
             buttonHelp_KAT.UseVisualStyleBackColor = false;
             buttonHelp_KAT.Click += buttonHelp_KAT_Click;
+            buttonHelp_KAT.MouseEnter += buttonHelp_KAT_MouseEnter;
             // 
             // buttonDone_KAT
             // 
             buttonDone_KAT.BackColor = SystemColors.ButtonFace;
+            buttonDone_KAT.Enabled = false;
             buttonDone_KAT.FlatStyle = FlatStyle.Flat;
             buttonDone_KAT.Image = Properties.Resources.check;
             buttonDone_KAT.Location = new Point(246, 0);
@@ -121,6 +131,8 @@
             buttonDone_KAT.TabIndex = 0;
             toolTip_KAT.SetToolTip(buttonDone_KAT, "Выполнить обработку данных");
             buttonDone_KAT.UseVisualStyleBackColor = false;
+            buttonDone_KAT.Click += buttonDone_KAT_Click;
+            buttonDone_KAT.MouseEnter += buttonDone_KAT_MouseEnter;
             // 
             // buttonSaveFile_KAT
             // 
@@ -134,6 +146,8 @@
             buttonSaveFile_KAT.TabIndex = 0;
             toolTip_KAT.SetToolTip(buttonSaveFile_KAT, "Сохранить обработанные данные в файл в формате CSV");
             buttonSaveFile_KAT.UseVisualStyleBackColor = false;
+            buttonSaveFile_KAT.Click += buttonSaveFile_KAT_Click;
+            buttonSaveFile_KAT.MouseEnter += buttonSaveFile_KAT_MouseEnter;
             // 
             // buttonOpenFile_KAT
             // 
@@ -145,6 +159,8 @@
             buttonOpenFile_KAT.TabIndex = 0;
             toolTip_KAT.SetToolTip(buttonOpenFile_KAT, "Открыть файл для обработки данных в формате CSV");
             buttonOpenFile_KAT.UseVisualStyleBackColor = false;
+            buttonOpenFile_KAT.Click += buttonOpenFile_KAT_Click;
+            buttonOpenFile_KAT.MouseEnter += buttonOpenFile_KAT_MouseEnter;
             // 
             // labelSearch_KAT
             // 
@@ -178,24 +194,28 @@
             buttonSearch_KAT.Name = "buttonSearch_KAT";
             buttonSearch_KAT.Size = new Size(52, 29);
             buttonSearch_KAT.TabIndex = 2;
+            toolTip_KAT.SetToolTip(buttonSearch_KAT, "Выполняет поиск заданных значений");
             buttonSearch_KAT.UseVisualStyleBackColor = true;
+            buttonSearch_KAT.Click += buttonSearch_KAT_Click;
             // 
             // buttonSortS_KAT
             // 
             buttonSortS_KAT.Location = new Point(12, 238);
             buttonSortS_KAT.Name = "buttonSortS_KAT";
-            buttonSortS_KAT.Size = new Size(149, 65);
+            buttonSortS_KAT.Size = new Size(93, 65);
             buttonSortS_KAT.TabIndex = 3;
             buttonSortS_KAT.Text = "Общая \r\nплощадь";
+            toolTip_KAT.SetToolTip(buttonSortS_KAT, "Сортирует таблицу по общей площади");
             buttonSortS_KAT.UseVisualStyleBackColor = true;
             // 
             // buttonSortRoom_KAT
             // 
-            buttonSortRoom_KAT.Location = new Point(167, 238);
+            buttonSortRoom_KAT.Location = new Point(108, 238);
             buttonSortRoom_KAT.Name = "buttonSortRoom_KAT";
-            buttonSortRoom_KAT.Size = new Size(149, 65);
+            buttonSortRoom_KAT.Size = new Size(103, 65);
             buttonSortRoom_KAT.TabIndex = 3;
             buttonSortRoom_KAT.Text = "Количество комнат";
+            toolTip_KAT.SetToolTip(buttonSortRoom_KAT, "Сортирует таблицу по количеству комнат");
             buttonSortRoom_KAT.UseVisualStyleBackColor = true;
             // 
             // panelLeft_KAT
@@ -205,6 +225,7 @@
             panelLeft_KAT.Controls.Add(textBoxMedium_KAT);
             panelLeft_KAT.Controls.Add(textBoxMAX_KAT);
             panelLeft_KAT.Controls.Add(textBoxMIN_KAT);
+            panelLeft_KAT.Controls.Add(button1);
             panelLeft_KAT.Controls.Add(buttonSortRoom_KAT);
             panelLeft_KAT.Controls.Add(buttonGraphic_KAT);
             panelLeft_KAT.Controls.Add(buttonMedium_KAT);
@@ -269,14 +290,26 @@
             textBoxMIN_KAT.Size = new Size(116, 67);
             textBoxMIN_KAT.TabIndex = 4;
             // 
+            // button1
+            // 
+            button1.Location = new Point(213, 238);
+            button1.Name = "button1";
+            button1.Size = new Size(103, 65);
+            button1.TabIndex = 3;
+            button1.Text = "Количество детей";
+            toolTip_KAT.SetToolTip(button1, "Сортирует таблицу по количеству детей");
+            button1.UseVisualStyleBackColor = true;
+            // 
             // buttonGraphic_KAT
             // 
             buttonGraphic_KAT.Location = new Point(12, 684);
             buttonGraphic_KAT.Name = "buttonGraphic_KAT";
             buttonGraphic_KAT.Size = new Size(304, 67);
             buttonGraphic_KAT.TabIndex = 3;
-            buttonGraphic_KAT.Text = "График полезной площади";
+            buttonGraphic_KAT.Text = "График общей площади";
+            toolTip_KAT.SetToolTip(buttonGraphic_KAT, "Выводит график общей площади");
             buttonGraphic_KAT.UseVisualStyleBackColor = true;
+            buttonGraphic_KAT.Click += buttonGraphic_KAT_Click;
             // 
             // buttonMedium_KAT
             // 
@@ -285,6 +318,7 @@
             buttonMedium_KAT.Size = new Size(178, 67);
             buttonMedium_KAT.TabIndex = 3;
             buttonMedium_KAT.Text = "Найти среднее значение площади";
+            toolTip_KAT.SetToolTip(buttonMedium_KAT, "Находит среднее значение всех площадей");
             buttonMedium_KAT.UseVisualStyleBackColor = true;
             // 
             // buttonMAX_KAT
@@ -294,6 +328,7 @@
             buttonMAX_KAT.Size = new Size(178, 67);
             buttonMAX_KAT.TabIndex = 3;
             buttonMAX_KAT.Text = "Найти максимальную площадь";
+            toolTip_KAT.SetToolTip(buttonMAX_KAT, "Находит максимальную площадь среди всех площадей");
             buttonMAX_KAT.UseVisualStyleBackColor = true;
             // 
             // buttonStartFilter_KAT
@@ -303,6 +338,7 @@
             buttonStartFilter_KAT.Size = new Size(178, 48);
             buttonStartFilter_KAT.TabIndex = 3;
             buttonStartFilter_KAT.Text = "Фильтровать по задолженности";
+            toolTip_KAT.SetToolTip(buttonStartFilter_KAT, "Фильтрует таблицу по наличии задолженности");
             buttonStartFilter_KAT.UseVisualStyleBackColor = true;
             // 
             // buttonMIN_KAT
@@ -312,6 +348,7 @@
             buttonMIN_KAT.Size = new Size(178, 67);
             buttonMIN_KAT.TabIndex = 3;
             buttonMIN_KAT.Text = "Найти минимальную площадь";
+            toolTip_KAT.SetToolTip(buttonMIN_KAT, "Находит минимальную площадь среди всех площадей");
             buttonMIN_KAT.UseVisualStyleBackColor = true;
             // 
             // buttonStopFilter_KAT
@@ -321,6 +358,7 @@
             buttonStopFilter_KAT.Size = new Size(304, 46);
             buttonStopFilter_KAT.TabIndex = 3;
             buttonStopFilter_KAT.Text = "Сброс фильтра";
+            toolTip_KAT.SetToolTip(buttonStopFilter_KAT, "Сбрасывает фильтр, возвращает изначальную таблицу");
             buttonStopFilter_KAT.UseVisualStyleBackColor = true;
             // 
             // panelDataGrid_KAT
@@ -334,39 +372,84 @@
             // 
             // dataGridViewTab_KAT
             // 
+            dataGridViewTab_KAT.AllowUserToAddRows = false;
             dataGridViewTab_KAT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTab_KAT.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
             dataGridViewTab_KAT.Dock = DockStyle.Fill;
             dataGridViewTab_KAT.Location = new Point(0, 0);
             dataGridViewTab_KAT.Name = "dataGridViewTab_KAT";
+            dataGridViewTab_KAT.RowHeadersVisible = false;
             dataGridViewTab_KAT.RowHeadersWidth = 51;
             dataGridViewTab_KAT.Size = new Size(1154, 450);
             dataGridViewTab_KAT.TabIndex = 0;
             // 
+            // Column1
+            // 
+            Column1.HeaderText = "Номер подъезда";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.Width = 190;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Номер квартиры";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.Width = 190;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Количество комнат";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.Width = 190;
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Общая площадь";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.Width = 200;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Есть ли задолженность";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.Width = 190;
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Количество детей";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.Width = 191;
+            // 
             // panelChart_KAT
             // 
-            panelChart_KAT.Controls.Add(chart1);
+            panelChart_KAT.Controls.Add(chartGrafic_KAT);
             panelChart_KAT.Dock = DockStyle.Fill;
             panelChart_KAT.Location = new Point(328, 530);
             panelChart_KAT.Name = "panelChart_KAT";
             panelChart_KAT.Size = new Size(1154, 373);
             panelChart_KAT.TabIndex = 3;
             // 
-            // chart1
+            // chartGrafic_KAT
             // 
             chartArea1.Name = "ChartArea1";
-            chart1.ChartAreas.Add(chartArea1);
-            chart1.Dock = DockStyle.Fill;
+            chartGrafic_KAT.ChartAreas.Add(chartArea1);
+            chartGrafic_KAT.Dock = DockStyle.Fill;
             legend1.Name = "Legend1";
-            chart1.Legends.Add(legend1);
-            chart1.Location = new Point(0, 0);
-            chart1.Name = "chart1";
+            chartGrafic_KAT.Legends.Add(legend1);
+            chartGrafic_KAT.Location = new Point(0, 0);
+            chartGrafic_KAT.Name = "chartGrafic_KAT";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            chart1.Series.Add(series1);
-            chart1.Size = new Size(1154, 373);
-            chart1.TabIndex = 0;
-            chart1.Text = "chart1";
+            chartGrafic_KAT.Series.Add(series1);
+            chartGrafic_KAT.Size = new Size(1154, 373);
+            chartGrafic_KAT.TabIndex = 0;
+            chartGrafic_KAT.Text = "chart1";
             // 
             // openFileDialog_KAT
             // 
@@ -396,7 +479,7 @@
             panelDataGrid_KAT.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewTab_KAT).EndInit();
             panelChart_KAT.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)chart1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chartGrafic_KAT).EndInit();
             ResumeLayout(false);
         }
 
@@ -428,10 +511,17 @@
         private Panel panelDataGrid_KAT;
         private DataGridView dataGridViewTab_KAT;
         private Panel panelChart_KAT;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGrafic_KAT;
         private ToolTip toolTip_KAT;
         private OpenFileDialog openFileDialog_KAT;
-        private SaveFileDialog saveFileDialog_KAT;
+        private SaveFileDialog SaveFileDialog_KAT;
         private Button buttonDone_KAT;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private Button button1;
     }
 }
