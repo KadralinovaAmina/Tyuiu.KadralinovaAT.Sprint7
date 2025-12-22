@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Tyuiu.KadralinovaAT.Sprint7.Project.V7.Lib;
@@ -69,10 +70,11 @@ namespace Tyuiu.KadralinovaAT.Sprint7.Project.V7
                 }
             }
             array = ds.GetArray(openFilePath);
+            buttonSaveFile_KAT.Enabled = true;
         }
         private void buttonSaveFile_KAT_Click(object sender, EventArgs e)
         {
-            SaveFileDialog_KAT.FileName = "OutPutFileTask7.csv";
+            SaveFileDialog_KAT.FileName = "Home.csv";
             SaveFileDialog_KAT.InitialDirectory = Directory.GetCurrentDirectory();
             SaveFileDialog_KAT.ShowDialog();
             string path = SaveFileDialog_KAT.FileName;
@@ -174,6 +176,120 @@ namespace Tyuiu.KadralinovaAT.Sprint7.Project.V7
             {
                 MessageBox.Show("Данные не найдены", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonSortS_KAT_Click(object sender, EventArgs e)
+        {
+            dataGridViewTab_KAT.Sort(dataGridViewTab_KAT.Columns[3], ListSortDirection.Descending);
+        }
+
+        private void buttonSortRoom_KAT_Click(object sender, EventArgs e)
+        {
+            dataGridViewTab_KAT.Sort(dataGridViewTab_KAT.Columns[2], ListSortDirection.Descending);
+        }
+
+        private void buttonSortChild_KAT_Click(object sender, EventArgs e)
+        {
+            dataGridViewTab_KAT.Sort(dataGridViewTab_KAT.Columns[5], ListSortDirection.Descending);
+        }
+
+        private void buttonStartFilter_KAT_Click(object sender, EventArgs e)
+        {
+            string filter = comboBoxFilter_KAT.SelectedItem.ToString();
+            foreach (DataGridViewRow row in dataGridViewTab_KAT.Rows)
+            {
+                string dolg = row.Cells[4].Value.ToString();
+                if (dolg == filter)
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+            }
+        }
+
+        private void buttonStopFilter_KAT_Click(object sender, EventArgs e)
+        {
+            string filter = comboBoxFilter_KAT.SelectedItem.ToString();
+            foreach (DataGridViewRow row in dataGridViewTab_KAT.Rows)
+            {
+                string dolg = row.Cells[4].Value.ToString();
+                if (dolg == filter)
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = true;
+                }
+            }
+        }
+
+        private void buttonMIN_KAT_Click(object sender, EventArgs e)
+        {
+            double min = double.MaxValue;
+            foreach (DataGridViewRow row in dataGridViewTab_KAT.Rows)
+            {
+                if (row.Cells[3].Value != null && row.Cells[3].Value != DBNull.Value)
+                {
+                    string str = row.Cells[3].Value.ToString();
+                    str = str.Replace('.', ',');
+                    double value = Convert.ToDouble(str);
+                    if (value < min)
+                    {
+                        min = value;
+                    }
+                }
+            }
+            textBoxMIN_KAT.Text = min.ToString();
+        }
+
+        private void buttonMAX_KAT_Click(object sender, EventArgs e)
+        {
+            double max = double.MinValue;
+            foreach (DataGridViewRow row in dataGridViewTab_KAT.Rows)
+            {
+                if (row.Cells[3].Value != null && row.Cells[3].Value != DBNull.Value)
+                {
+                    string str = row.Cells[3].Value.ToString();
+                    str = str.Replace('.', ',');
+                    double value = Convert.ToDouble(str);
+                    if (value > max)
+                    {
+                        max = value;
+                    }
+                }
+            }
+            textBoxMAX_KAT.Text = max.ToString();
+        }
+
+        private void buttonMedium_KAT_Click(object sender, EventArgs e)
+        {
+            double sum = 0;
+            int count = 0;
+
+            foreach (DataGridViewRow row in dataGridViewTab_KAT.Rows)
+            {
+                if (row.Cells[3].Value != null && row.Cells[3].Value != DBNull.Value)
+                {
+                    string str = row.Cells[3].Value.ToString();
+                    str = str.Replace('.', ',');
+                    double value = Convert.ToDouble(str);
+                    sum += value;
+                    count++;
+                }
+            }
+
+            double medium = sum / count;
+            textBoxMedium_KAT.Text = Convert.ToString(Math.Round(medium, 2));
+        }
+
+        private void buttonAddStr_KAT_Click(object sender, EventArgs e)
+        {
+            FormAddStr formAddStr = new FormAddStr(this);
+            formAddStr.ShowDialog();
         }
     }
 }

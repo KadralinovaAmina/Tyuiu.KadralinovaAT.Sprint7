@@ -16,5 +16,10 @@ namespace Tyuiu.KadralinovaAT.Sprint7.Project.V7
         {
             InitializeComponent();
         }
+
+        private void buttonOK_KAT_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

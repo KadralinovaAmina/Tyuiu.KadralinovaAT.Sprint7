@@ -50,8 +50,9 @@
             textBoxMedium_KAT = new TextBox();
             textBoxMAX_KAT = new TextBox();
             textBoxMIN_KAT = new TextBox();
-            button1 = new Button();
+            buttonSortChild_KAT = new Button();
             buttonGraphic_KAT = new Button();
+            buttonAddStr_KAT = new Button();
             buttonMedium_KAT = new Button();
             buttonMAX_KAT = new Button();
             buttonStartFilter_KAT = new Button();
@@ -165,7 +166,7 @@
             // labelSearch_KAT
             // 
             labelSearch_KAT.AutoSize = true;
-            labelSearch_KAT.Location = new Point(12, 156);
+            labelSearch_KAT.Location = new Point(12, 134);
             labelSearch_KAT.Name = "labelSearch_KAT";
             labelSearch_KAT.Size = new Size(52, 20);
             labelSearch_KAT.TabIndex = 0;
@@ -174,7 +175,7 @@
             // labelSort_KAT
             // 
             labelSort_KAT.AutoSize = true;
-            labelSort_KAT.Location = new Point(99, 203);
+            labelSort_KAT.Location = new Point(99, 181);
             labelSort_KAT.Name = "labelSort_KAT";
             labelSort_KAT.Size = new Size(121, 20);
             labelSort_KAT.TabIndex = 0;
@@ -182,7 +183,7 @@
             // 
             // textBoxSearch_KAT
             // 
-            textBoxSearch_KAT.Location = new Point(70, 153);
+            textBoxSearch_KAT.Location = new Point(70, 131);
             textBoxSearch_KAT.Name = "textBoxSearch_KAT";
             textBoxSearch_KAT.Size = new Size(182, 27);
             textBoxSearch_KAT.TabIndex = 1;
@@ -190,7 +191,7 @@
             // buttonSearch_KAT
             // 
             buttonSearch_KAT.Image = Properties.Resources.search;
-            buttonSearch_KAT.Location = new Point(264, 153);
+            buttonSearch_KAT.Location = new Point(264, 131);
             buttonSearch_KAT.Name = "buttonSearch_KAT";
             buttonSearch_KAT.Size = new Size(52, 29);
             buttonSearch_KAT.TabIndex = 2;
@@ -200,23 +201,25 @@
             // 
             // buttonSortS_KAT
             // 
-            buttonSortS_KAT.Location = new Point(12, 238);
+            buttonSortS_KAT.Location = new Point(12, 216);
             buttonSortS_KAT.Name = "buttonSortS_KAT";
             buttonSortS_KAT.Size = new Size(93, 65);
             buttonSortS_KAT.TabIndex = 3;
             buttonSortS_KAT.Text = "Общая \r\nплощадь";
             toolTip_KAT.SetToolTip(buttonSortS_KAT, "Сортирует таблицу по общей площади");
             buttonSortS_KAT.UseVisualStyleBackColor = true;
+            buttonSortS_KAT.Click += buttonSortS_KAT_Click;
             // 
             // buttonSortRoom_KAT
             // 
-            buttonSortRoom_KAT.Location = new Point(108, 238);
+            buttonSortRoom_KAT.Location = new Point(108, 216);
             buttonSortRoom_KAT.Name = "buttonSortRoom_KAT";
             buttonSortRoom_KAT.Size = new Size(103, 65);
             buttonSortRoom_KAT.TabIndex = 3;
             buttonSortRoom_KAT.Text = "Количество комнат";
             toolTip_KAT.SetToolTip(buttonSortRoom_KAT, "Сортирует таблицу по количеству комнат");
             buttonSortRoom_KAT.UseVisualStyleBackColor = true;
+            buttonSortRoom_KAT.Click += buttonSortRoom_KAT_Click;
             // 
             // panelLeft_KAT
             // 
@@ -225,9 +228,10 @@
             panelLeft_KAT.Controls.Add(textBoxMedium_KAT);
             panelLeft_KAT.Controls.Add(textBoxMAX_KAT);
             panelLeft_KAT.Controls.Add(textBoxMIN_KAT);
-            panelLeft_KAT.Controls.Add(button1);
+            panelLeft_KAT.Controls.Add(buttonSortChild_KAT);
             panelLeft_KAT.Controls.Add(buttonSortRoom_KAT);
             panelLeft_KAT.Controls.Add(buttonGraphic_KAT);
+            panelLeft_KAT.Controls.Add(buttonAddStr_KAT);
             panelLeft_KAT.Controls.Add(buttonMedium_KAT);
             panelLeft_KAT.Controls.Add(buttonMAX_KAT);
             panelLeft_KAT.Controls.Add(buttonStartFilter_KAT);
@@ -248,7 +252,7 @@
             // 
             labelHead_KAT.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             labelHead_KAT.ForeColor = SystemColors.HotTrack;
-            labelHead_KAT.Location = new Point(51, 22);
+            labelHead_KAT.Location = new Point(51, 14);
             labelHead_KAT.Name = "labelHead_KAT";
             labelHead_KAT.Size = new Size(217, 103);
             labelHead_KAT.TabIndex = 6;
@@ -258,14 +262,15 @@
             // comboBoxFilter_KAT
             // 
             comboBoxFilter_KAT.FormattingEnabled = true;
-            comboBoxFilter_KAT.Location = new Point(196, 333);
+            comboBoxFilter_KAT.Items.AddRange(new object[] { "Да", "Нет" });
+            comboBoxFilter_KAT.Location = new Point(196, 311);
             comboBoxFilter_KAT.Name = "comboBoxFilter_KAT";
             comboBoxFilter_KAT.Size = new Size(120, 28);
             comboBoxFilter_KAT.TabIndex = 5;
             // 
             // textBoxMedium_KAT
             // 
-            textBoxMedium_KAT.Location = new Point(200, 592);
+            textBoxMedium_KAT.Location = new Point(200, 570);
             textBoxMedium_KAT.Multiline = true;
             textBoxMedium_KAT.Name = "textBoxMedium_KAT";
             textBoxMedium_KAT.ReadOnly = true;
@@ -274,7 +279,7 @@
             // 
             // textBoxMAX_KAT
             // 
-            textBoxMAX_KAT.Location = new Point(200, 519);
+            textBoxMAX_KAT.Location = new Point(200, 497);
             textBoxMAX_KAT.Multiline = true;
             textBoxMAX_KAT.Name = "textBoxMAX_KAT";
             textBoxMAX_KAT.ReadOnly = true;
@@ -283,26 +288,27 @@
             // 
             // textBoxMIN_KAT
             // 
-            textBoxMIN_KAT.Location = new Point(200, 446);
+            textBoxMIN_KAT.Location = new Point(200, 424);
             textBoxMIN_KAT.Multiline = true;
             textBoxMIN_KAT.Name = "textBoxMIN_KAT";
             textBoxMIN_KAT.ReadOnly = true;
             textBoxMIN_KAT.Size = new Size(116, 67);
             textBoxMIN_KAT.TabIndex = 4;
             // 
-            // button1
+            // buttonSortChild_KAT
             // 
-            button1.Location = new Point(213, 238);
-            button1.Name = "button1";
-            button1.Size = new Size(103, 65);
-            button1.TabIndex = 3;
-            button1.Text = "Количество детей";
-            toolTip_KAT.SetToolTip(button1, "Сортирует таблицу по количеству детей");
-            button1.UseVisualStyleBackColor = true;
+            buttonSortChild_KAT.Location = new Point(213, 216);
+            buttonSortChild_KAT.Name = "buttonSortChild_KAT";
+            buttonSortChild_KAT.Size = new Size(103, 65);
+            buttonSortChild_KAT.TabIndex = 3;
+            buttonSortChild_KAT.Text = "Количество детей";
+            toolTip_KAT.SetToolTip(buttonSortChild_KAT, "Сортирует таблицу по количеству детей");
+            buttonSortChild_KAT.UseVisualStyleBackColor = true;
+            buttonSortChild_KAT.Click += buttonSortChild_KAT_Click;
             // 
             // buttonGraphic_KAT
             // 
-            buttonGraphic_KAT.Location = new Point(12, 684);
+            buttonGraphic_KAT.Location = new Point(12, 662);
             buttonGraphic_KAT.Name = "buttonGraphic_KAT";
             buttonGraphic_KAT.Size = new Size(304, 67);
             buttonGraphic_KAT.TabIndex = 3;
@@ -311,55 +317,71 @@
             buttonGraphic_KAT.UseVisualStyleBackColor = true;
             buttonGraphic_KAT.Click += buttonGraphic_KAT_Click;
             // 
+            // buttonAddStr_KAT
+            // 
+            buttonAddStr_KAT.Location = new Point(12, 744);
+            buttonAddStr_KAT.Name = "buttonAddStr_KAT";
+            buttonAddStr_KAT.Size = new Size(304, 67);
+            buttonAddStr_KAT.TabIndex = 3;
+            buttonAddStr_KAT.Text = "Добавить новую строку";
+            toolTip_KAT.SetToolTip(buttonAddStr_KAT, "Открывает окно с добавлением новых данных о жителях.");
+            buttonAddStr_KAT.UseVisualStyleBackColor = true;
+            buttonAddStr_KAT.Click += buttonAddStr_KAT_Click;
+            // 
             // buttonMedium_KAT
             // 
-            buttonMedium_KAT.Location = new Point(12, 592);
+            buttonMedium_KAT.Location = new Point(12, 570);
             buttonMedium_KAT.Name = "buttonMedium_KAT";
             buttonMedium_KAT.Size = new Size(178, 67);
             buttonMedium_KAT.TabIndex = 3;
             buttonMedium_KAT.Text = "Найти среднее значение площади";
             toolTip_KAT.SetToolTip(buttonMedium_KAT, "Находит среднее значение всех площадей");
             buttonMedium_KAT.UseVisualStyleBackColor = true;
+            buttonMedium_KAT.Click += buttonMedium_KAT_Click;
             // 
             // buttonMAX_KAT
             // 
-            buttonMAX_KAT.Location = new Point(12, 519);
+            buttonMAX_KAT.Location = new Point(12, 497);
             buttonMAX_KAT.Name = "buttonMAX_KAT";
             buttonMAX_KAT.Size = new Size(178, 67);
             buttonMAX_KAT.TabIndex = 3;
             buttonMAX_KAT.Text = "Найти максимальную площадь";
             toolTip_KAT.SetToolTip(buttonMAX_KAT, "Находит максимальную площадь среди всех площадей");
             buttonMAX_KAT.UseVisualStyleBackColor = true;
+            buttonMAX_KAT.Click += buttonMAX_KAT_Click;
             // 
             // buttonStartFilter_KAT
             // 
-            buttonStartFilter_KAT.Location = new Point(12, 322);
+            buttonStartFilter_KAT.Location = new Point(12, 300);
             buttonStartFilter_KAT.Name = "buttonStartFilter_KAT";
             buttonStartFilter_KAT.Size = new Size(178, 48);
             buttonStartFilter_KAT.TabIndex = 3;
             buttonStartFilter_KAT.Text = "Фильтровать по задолженности";
             toolTip_KAT.SetToolTip(buttonStartFilter_KAT, "Фильтрует таблицу по наличии задолженности");
             buttonStartFilter_KAT.UseVisualStyleBackColor = true;
+            buttonStartFilter_KAT.Click += buttonStartFilter_KAT_Click;
             // 
             // buttonMIN_KAT
             // 
-            buttonMIN_KAT.Location = new Point(12, 446);
+            buttonMIN_KAT.Location = new Point(12, 424);
             buttonMIN_KAT.Name = "buttonMIN_KAT";
             buttonMIN_KAT.Size = new Size(178, 67);
             buttonMIN_KAT.TabIndex = 3;
             buttonMIN_KAT.Text = "Найти минимальную площадь";
             toolTip_KAT.SetToolTip(buttonMIN_KAT, "Находит минимальную площадь среди всех площадей");
             buttonMIN_KAT.UseVisualStyleBackColor = true;
+            buttonMIN_KAT.Click += buttonMIN_KAT_Click;
             // 
             // buttonStopFilter_KAT
             // 
-            buttonStopFilter_KAT.Location = new Point(12, 376);
+            buttonStopFilter_KAT.Location = new Point(12, 354);
             buttonStopFilter_KAT.Name = "buttonStopFilter_KAT";
             buttonStopFilter_KAT.Size = new Size(304, 46);
             buttonStopFilter_KAT.TabIndex = 3;
             buttonStopFilter_KAT.Text = "Сброс фильтра";
             toolTip_KAT.SetToolTip(buttonStopFilter_KAT, "Сбрасывает фильтр, возвращает изначальную таблицу");
             buttonStopFilter_KAT.UseVisualStyleBackColor = true;
+            buttonStopFilter_KAT.Click += buttonStopFilter_KAT_Click;
             // 
             // panelDataGrid_KAT
             // 
@@ -509,7 +531,7 @@
         private Button buttonGraphic_KAT;
         private Label labelHead_KAT;
         private Panel panelDataGrid_KAT;
-        private DataGridView dataGridViewTab_KAT;
+        public DataGridView dataGridViewTab_KAT;
         private Panel panelChart_KAT;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartGrafic_KAT;
         private ToolTip toolTip_KAT;
@@ -522,6 +544,8 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
-        private Button button1;
+        private Button buttonSortChild_KAT;
+        private Button buttonAddStr_KAT;
+
     }
 }

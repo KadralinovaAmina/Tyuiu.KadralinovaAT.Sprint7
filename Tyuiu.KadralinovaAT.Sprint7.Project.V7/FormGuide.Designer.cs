@@ -38,6 +38,7 @@
             label4 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
+            buttonOK_KAT = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -127,11 +128,23 @@
             pictureBox2.TabIndex = 3;
             pictureBox2.TabStop = false;
             // 
+            // buttonOK_KAT
+            // 
+            buttonOK_KAT.BackColor = SystemColors.ButtonFace;
+            buttonOK_KAT.Location = new Point(753, 739);
+            buttonOK_KAT.Name = "buttonOK_KAT";
+            buttonOK_KAT.Size = new Size(94, 29);
+            buttonOK_KAT.TabIndex = 9;
+            buttonOK_KAT.Text = "Ок";
+            buttonOK_KAT.UseVisualStyleBackColor = false;
+            buttonOK_KAT.Click += buttonOK_KAT_Click;
+            // 
             // FormGuide
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(898, 735);
+            ClientSize = new Size(898, 787);
+            Controls.Add(buttonOK_KAT);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(label4);
@@ -164,5 +177,6 @@
         private Label label4;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
+        private Button buttonOK_KAT;
     }
 }
